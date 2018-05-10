@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="wedssm:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="wed-ssm.war">
+      <element id="artifact" artifact-name="wedssm:war exploded" />
+    </root>
+  </artifact>
+</component>
