@@ -36,7 +36,7 @@ CREATE TABLE `actfile` (
   KEY `actfile_employee_idx` (`employee`),
   CONSTRAINT `actfile_activity` FOREIGN KEY (`activity`) REFERENCES `activity` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `actfile_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +45,7 @@ CREATE TABLE `actfile` (
 
 LOCK TABLES `actfile` WRITE;
 /*!40000 ALTER TABLE `actfile` DISABLE KEYS */;
+INSERT INTO `actfile` VALUES (1,'H:\\OAstorage\\test.txt','test','txt',24,'2018-12-21',1,1),(2,'H:\\OAstorage\\test.txt','test','txt',24,'2018-12-21',1,1),(3,'H:\\OAstorage\\test.txt','test','txt',24,'2018-12-21',1,1),(4,'H:\\OAstorage\\test.txt','test','txt',24,'2018-12-21',1,1),(5,'H:\\OAstorage\\test.txt','test','txt',24,'2018-12-21',1,1),(6,'H:\\OAstorage\\9e11b617-6feb-49e9-8b7d-8fff8702db20.jpg','1512794110649.jpg','jpg',2485399,'2018-05-25',1,1);
 /*!40000 ALTER TABLE `actfile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +70,7 @@ CREATE TABLE `activity` (
   KEY `activity_dept_idx` (`dept`),
   CONSTRAINT `activity_dept` FOREIGN KEY (`dept`) REFERENCES `dept` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `activity_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,6 +79,7 @@ CREATE TABLE `activity` (
 
 LOCK TABLES `activity` WRITE;
 /*!40000 ALTER TABLE `activity` DISABLE KEYS */;
+INSERT INTO `activity` VALUES (1,'年庆','开趴体','2018-05-12','2018-05-12',1,1,1),(2,'中秋晚会','仙庙烧鸡聚会','2018-08-15','2018-08-16',2,1,1),(4,'测试','测试','2018-08-15','2018-08-15',1,1,1),(5,'测试','测试','2018-08-15','2018-08-15',1,1,1),(6,'测试','测试','2018-08-15','2018-08-15',1,1,1),(7,'测试','测试','2018-08-15','2018-08-15',1,1,1),(19,'测试','测试','2018-08-15','2018-08-15',1,1,1),(32,'安全网群翁群无','sssdsdfuwensdfsd','2018-05-25','2018-05-25',1,1,1),(33,'上个','<p>随时随地摄氏度的说三道四的规范个人认为</p>','2018-05-25','2018-05-25',1,1,1);
 /*!40000 ALTER TABLE `activity` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +98,7 @@ CREATE TABLE `actoption` (
   PRIMARY KEY (`uuid`),
   KEY `option_activity_idx` (`activity`),
   CONSTRAINT `option_activity` FOREIGN KEY (`activity`) REFERENCES `activity` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,6 +107,7 @@ CREATE TABLE `actoption` (
 
 LOCK TABLES `actoption` WRITE;
 /*!40000 ALTER TABLE `actoption` DISABLE KEYS */;
+INSERT INTO `actoption` VALUES (1,'活动选项1',2,1),(2,'活动选项2',2,1),(4,'测试',2,1),(5,'测试',2,1);
 /*!40000 ALTER TABLE `actoption` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,7 +128,7 @@ CREATE TABLE `actvote` (
   KEY `actvote_employee_idx` (`employee`),
   CONSTRAINT `actvote_actoption` FOREIGN KEY (`actoption`) REFERENCES `actoption` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `actvote_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,6 +137,7 @@ CREATE TABLE `actvote` (
 
 LOCK TABLES `actvote` WRITE;
 /*!40000 ALTER TABLE `actvote` DISABLE KEYS */;
+INSERT INTO `actvote` VALUES (1,'2018-05-12',1,1),(2,'2018-12-12',1,2);
 /*!40000 ALTER TABLE `actvote` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,6 +150,7 @@ DROP TABLE IF EXISTS `announce`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `announce` (
   `uuid` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) DEFAULT NULL,
   `descript` text NOT NULL,
   `createtime` date NOT NULL,
   `dept` int(11) NOT NULL,
@@ -155,7 +160,7 @@ CREATE TABLE `announce` (
   KEY `announce_dept_idx` (`dept`),
   CONSTRAINT `announce_dept` FOREIGN KEY (`dept`) REFERENCES `dept` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `announce_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,6 +169,7 @@ CREATE TABLE `announce` (
 
 LOCK TABLES `announce` WRITE;
 /*!40000 ALTER TABLE `announce` DISABLE KEYS */;
+INSERT INTO `announce` VALUES (1,'超级信心','超级修改信息','2018-05-19',1,1),(2,'公告2','公告2','2015-12-03',1,2),(3,NULL,'添加计划','2018-05-25',1,1);
 /*!40000 ALTER TABLE `announce` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,7 +186,7 @@ CREATE TABLE `dept` (
   `descript` text NOT NULL COMMENT '部门简介',
   PRIMARY KEY (`uuid`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,6 +195,7 @@ CREATE TABLE `dept` (
 
 LOCK TABLES `dept` WRITE;
 /*!40000 ALTER TABLE `dept` DISABLE KEYS */;
+INSERT INTO `dept` VALUES (1,'开发部','开发'),(2,'销售部','销售'),(3,'设计部','设计'),(4,'虚拟部','虚拟'),(6,'虚部','虚拟'),(7,'拟部','虚拟'),(8,'非虚拟部','虚拟'),(11,'那虚拟部','虚拟'),(13,'坏虚拟部','虚拟'),(14,'大虚拟部','虚拟'),(15,'小虚拟部','虚拟'),(16,'多虚拟部','虚拟'),(17,'少虚拟部','虚拟'),(18,'页面层测试','页面层测试');
 /*!40000 ALTER TABLE `dept` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +214,7 @@ CREATE TABLE `employee` (
   `createtime` date NOT NULL COMMENT '入职时间',
   PRIMARY KEY (`uuid`),
   UNIQUE KEY `account_UNIQUE` (`account`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,6 +223,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+INSERT INTO `employee` VALUES (1,'A001','123','在职','2018-05-12'),(2,'A002','123','在职','2018-05-12'),(3,'A003','123','在职','2018-05-12'),(5,'A004','123','在职','2018-05-17'),(7,'A005','123','在职','2018-05-17'),(9,'A006','123','在职','2018-05-17');
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,7 +243,7 @@ CREATE TABLE `employeeinfo` (
   `email` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `info_employee` FOREIGN KEY (`id`) REFERENCES `employee` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `info_employee` FOREIGN KEY (`id`) REFERENCES `employee` (`uuid`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -245,6 +253,7 @@ CREATE TABLE `employeeinfo` (
 
 LOCK TABLES `employeeinfo` WRITE;
 /*!40000 ALTER TABLE `employeeinfo` DISABLE KEYS */;
+INSERT INTO `employeeinfo` VALUES (1,'赵云','男','18','152221742','12312312312@qq.com','广东省肇庆市'),(2,'王畅','女','18','1112312123','38829932@qq.com','广东省肇庆市'),(3,'饿哦','男','19','1123211212','32434128455@qq.com','广东身肇庆市');
 /*!40000 ALTER TABLE `employeeinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,7 +277,7 @@ CREATE TABLE `job` (
   KEY `job_employee_idx` (`employee`),
   CONSTRAINT `job_dept` FOREIGN KEY (`dept`) REFERENCES `dept` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `job_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -277,6 +286,7 @@ CREATE TABLE `job` (
 
 LOCK TABLES `job` WRITE;
 /*!40000 ALTER TABLE `job` DISABLE KEYS */;
+INSERT INTO `job` VALUES (1,'经理','经理',2,'2015-01-01',1,1),(2,'总监','总监',2,'2015-01-02',1,2),(3,'总裁','总裁',3,'2015-01-01',2,3),(5,'测试','测试',3,'2015-01-01',1,1),(6,'测试','测试',3,'2015-01-01',1,1),(7,'测试','测试',3,'2015-01-01',1,1),(10,'新职位','描述',1,'2018-05-11',1,1);
 /*!40000 ALTER TABLE `job` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -298,7 +308,7 @@ CREATE TABLE `plan` (
   PRIMARY KEY (`uuid`),
   KEY `plan_emplpyee_idx` (`employee`),
   CONSTRAINT `plan_emplpyee` FOREIGN KEY (`employee`) REFERENCES `employee` (`uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -307,8 +317,41 @@ CREATE TABLE `plan` (
 
 LOCK TABLES `plan` WRITE;
 /*!40000 ALTER TABLE `plan` DISABLE KEYS */;
+INSERT INTO `plan` VALUES (2,'上班','2018-05-12','2018-05-12','2018-05-12','未开始',1),(3,'下班','2018-05-12','2018-05-12','2018-05-12','进行中',1),(5,'测试','2018-05-12','2018-05-12','2018-05-12','进行中',1),(6,'测试','2018-05-12','2018-05-12','2018-05-12','进行中',1),(7,'测试','2018-05-12','2018-05-12','2018-05-12','进行中',1);
 /*!40000 ALTER TABLE `plan` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role` (
+  `uuid` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `url` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role`
+--
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping events for database 'officeauto'
+--
+
+--
+-- Dumping routines for database 'officeauto'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -319,4 +362,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-11 16:42:09
+-- Dump completed on 2018-05-28 21:47:58
